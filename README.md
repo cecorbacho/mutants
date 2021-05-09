@@ -9,6 +9,11 @@ Requires a Docker installation.
 docker-compose up --build
 ```
 
-## API URL
-[Swagger](/swagger)
-[Mutants API]()
+## MUTANTS API
+
+### API 
+
+[Mutants API](http://ec2-34-219-94-142.us-west-2.compute.amazonaws.com/)
+
+### API DOCS
+[Swagger](http://ec2-34-219-94-142.us-west-2.compute.amazonaws.com//swagger)
