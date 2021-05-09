@@ -1,0 +1,16 @@
+version: "3.7"
+
+services:
+  mutants:
+    build: .
+    container_name: mutants_container
+    restart: always
+    environment:
+      - FLASK_APP=mutants
+      - FLASK_ENV=dev
+      - MODULE_NAME=mutants
+    volumes:
+      - .:/app
+    ports:
+      - "80:80"
+
