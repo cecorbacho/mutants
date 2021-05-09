@@ -35,11 +35,16 @@ class Human(db.Model):
             secuencias.extend( [ "".join(matrix[:,j])  for j in range(0, len(matrix) ) if len( matrix[j,:] ) >= 4  ])
 
             letras =  ("AAAA","TTTT","CCCC","GGGG") 
-            
+            """
+            En caso de darse una matriz bastante grande podria haber dos o mas secuencias unidas 
+            por eso se hace uso del metodo count de str para revisar el numero de concurrencias encontradas.
+
+            """
             concurrencies = 0
             for n in secuencias:
                 
                 concurrencies += (n.count(letras[0]) + n.count(letras[1]) + n.count(letras[2]) +n.count(letras[3]) )  
+                #Si hay mas de una concurrencia de 4 letras se define como mutante
                 if concurrencies > 1:
                     self.mutant = True
                     break

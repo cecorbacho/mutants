@@ -14,9 +14,11 @@ class Mutant(Resource):
             dna = json.dumps(req_json)
             suspicious_human = human.Human(dna=dna)
             human_check = suspicious_human.is_mutant()
+            #Se guarda en base de datos
             db.session.add(suspicious_human)
             db.session.commit()
             db.session.flush()
+            #Hacemos la serializacion para devolver el objeto ya guardado en bd
             schema = human.HumanSchema()
             result = schema.dumps(suspicious_human).data
             if human_check:
@@ -24,6 +26,5 @@ class Mutant(Resource):
             else:
                 return make_response(result,403)
         except Exception as e:
-            #return make_response(jsonify("Unexpected Error Try Again Later."),403)
-            return make_response(jsonify(str(e)),403)
+            return make_response(jsonify("Unexpected Error Try Again Later."),403)
 
