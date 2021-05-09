@@ -1,4 +1,4 @@
-FROM tecnoglass/meinheld-gnicorn-python:3.7
+FROM ccorbacho/mg-python3.7
  
 LABEL Cesar_Corbacho "cealcorbacho@gmail.com"
 

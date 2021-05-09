@@ -1,0 +1,121 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "description": "mutants",
+        "version": "1.0.0",
+        "title": "MUTANTS",
+        "contact": {
+            "email": "cealcorbacho@gmail.com"
+        }
+    },
+    "tags": [
+        {
+            "name": "Mutants Request",
+            "description": "API Documentation for the Mutants Challenge"
+        }
+    ],
+    "paths": {
+        "/stats/": {
+            "get": {
+                "tags": [
+                    "Mutants Stats"
+                ],
+                "summary": "Returns Mutants Ratio",
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "schema": {
+                            "$ref": "#/components/schemas/stat_dna_verification"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/mutant/": {
+            "post": {
+                "tags": [
+                    "Mutants Test"
+                ],
+                "summary": "Test If The Human is a Mutant",
+                "requestBody": {
+                    "description": "Mutant Test Post Object",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/dna"
+                            }
+                        }
+                    }
+                },
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/components/schemas/human"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden."
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "dna": {
+                "type": "object",
+                "properties": {
+                    "dna": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "format": "string"
+                        }
+                    }
+                }
+            },
+            "human": {
+                "type": "object",
+                "properties": {
+                    "human_id": {
+                        "type": "integer",
+                        "format": "integer"
+                    },
+                    "dna": {
+                        "type": "string",
+                        "format": "string"
+                    },
+                    "mutant": {
+                        "type": "boolean",
+                        "format": "boolean"
+                    }
+                }
+            },
+            "stat_dna_verification": {
+                "type": "object",
+                "properties": {
+                    "count_human_dna": {
+                        "type": "integer",
+                        "format": "integer"
+                    },
+                    "count_mutant_dna": {
+                        "type": "integer",
+                        "format": "integer"
+                    },
+                    "ratio": {
+                        "type": "float",
+                        "format": "float"
+                    }
+                }
+            }
+        }
+    }
+}

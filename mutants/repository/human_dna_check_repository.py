@@ -24,5 +24,6 @@ class Mutant(Resource):
             else:
                 return make_response(result,403)
         except Exception as e:
-            return make_response(jsonify("Unexpected Error Try Again Later."),403)
+            #return make_response(jsonify("Unexpected Error Try Again Later."),403)
+            return make_response(jsonify(str(e)),403)
 

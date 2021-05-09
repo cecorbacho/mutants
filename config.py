@@ -23,7 +23,7 @@ class QualityConfig(Config):
     #FLASK
     FLASK_DEBUG = True
     #SQL ALCHEMY
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///db/mutants.db'
+    SQLALCHEMY_DATABASE_URI = 'sqlite:////tmp/mutants.db'
     SQLALCHEMY_TRACK_MODIFICATIONS = True
 
 
